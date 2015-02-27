@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BED998801AA09BA300F7FE5D /* MultiBackButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiBackButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BED998801AA09BA300F7FE5D /* MultiBackButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MultiBackButton.app; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED998841AA09BA300F7FE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BED998851AA09BA300F7FE5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BED998871AA09BA300F7FE5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,11 +28,8 @@
 		BED998901AA09BA300F7FE5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BED998A91AA09C0C00F7FE5D /* MultiBackButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiBackButtonItem.h; sourceTree = "<group>"; };
 		BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiBackButtonItem.m; sourceTree = "<group>"; };
-		BED998AC1AA09D0300F7FE5D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		BED998AD1AA09D0300F7FE5D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BED998AE1AA0A86900F7FE5D /* SmudgyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmudgyWindow.h; sourceTree = "<group>"; };
 		BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmudgyWindow.m; sourceTree = "<group>"; };
-		BED998B11AA0ABE400F7FE5D /* example.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +49,6 @@
 				BED998A91AA09C0C00F7FE5D /* MultiBackButtonItem.h */,
 				BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */,
 				BED998821AA09BA300F7FE5D /* Example */,
-				BED998AC1AA09D0300F7FE5D /* LICENSE */,
-				BED998AD1AA09D0300F7FE5D /* README.md */,
-				BED998B11AA0ABE400F7FE5D /* example.gif */,
 				BED998811AA09BA300F7FE5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -298,6 +292,7 @@
 				BED998A51AA09BA300F7FE5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
