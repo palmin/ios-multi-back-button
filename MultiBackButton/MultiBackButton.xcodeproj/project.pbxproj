@@ -13,6 +13,7 @@
 		BED9988F1AA09BA300F7FE5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED9988D1AA09BA300F7FE5D /* Main.storyboard */; };
 		BED998911AA09BA300F7FE5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED998901AA09BA300F7FE5D /* Images.xcassets */; };
 		BED998AB1AA09C0C00F7FE5D /* MultiBackButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */; };
+		BED998B01AA0A86900F7FE5D /* SmudgyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiBackButtonItem.m; sourceTree = "<group>"; };
 		BED998AC1AA09D0300F7FE5D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BED998AD1AA09D0300F7FE5D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BED998AE1AA0A86900F7FE5D /* SmudgyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmudgyWindow.h; sourceTree = "<group>"; };
+		BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmudgyWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 			children = (
 				BED998871AA09BA300F7FE5D /* AppDelegate.h */,
 				BED998881AA09BA300F7FE5D /* AppDelegate.m */,
+				BED998AE1AA0A86900F7FE5D /* SmudgyWindow.h */,
+				BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */,
 				BED9988A1AA09BA300F7FE5D /* ViewController.h */,
 				BED9988B1AA09BA300F7FE5D /* ViewController.m */,
 				BED9988D1AA09BA300F7FE5D /* Main.storyboard */,
@@ -156,6 +161,7 @@
 			files = (
 				BED9988C1AA09BA300F7FE5D /* ViewController.m in Sources */,
 				BED998891AA09BA300F7FE5D /* AppDelegate.m in Sources */,
+				BED998B01AA0A86900F7FE5D /* SmudgyWindow.m in Sources */,
 				BED998861AA09BA300F7FE5D /* main.m in Sources */,
 				BED998AB1AA09C0C00F7FE5D /* MultiBackButtonItem.m in Sources */,
 			);
