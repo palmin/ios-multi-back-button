@@ -32,6 +32,7 @@
 		BED998AD1AA09D0300F7FE5D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BED998AE1AA0A86900F7FE5D /* SmudgyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmudgyWindow.h; sourceTree = "<group>"; };
 		BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmudgyWindow.m; sourceTree = "<group>"; };
+		BED998B11AA0ABE400F7FE5D /* example.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 				BED998821AA09BA300F7FE5D /* Example */,
 				BED998AC1AA09D0300F7FE5D /* LICENSE */,
 				BED998AD1AA09D0300F7FE5D /* README.md */,
+				BED998B11AA0ABE400F7FE5D /* example.gif */,
 				BED998811AA09BA300F7FE5D /* Products */,
 			);
 			sourceTree = "<group>";
