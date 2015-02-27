@@ -7,6 +7,7 @@ Users long-tap the back-button to display a table with the viewControllers in th
 stack. They either lift the finger and tap a table-cell or move it above the table and release above 
 the cell for the view-controller you want to navigate to. If they do a regular tap, the back-button 
 will bring you back a single level as usual.
+  <img src="example.gif"/>
 
 You configure a view-controller to use there buttons with somelink like
 
