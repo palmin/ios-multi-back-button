@@ -29,6 +29,7 @@
 #import "AB_MultiBackButtonItem.h"
 
 #define RotateChevron NO
+#define BackgroundColor [UIColor colorWithWhite:244.0/255 alpha:1];
 
 @interface AB_MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
                                            UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate> {
@@ -50,8 +51,6 @@
 @end
 
 @implementation AB_MultiBackButtonView
-
-#define BackgroundColor [UIColor colorWithWhite:244.0/255 alpha:1];
 
 static NSString* titleForViewController(UIViewController* controller) {
     // make sure view is loaded
@@ -85,7 +84,7 @@ static UIImage* imageForController(UIViewController* controller) {
         [bezierPath addLineToPoint: CGPointMake(2, 10.5)];
         [bezierPath addLineToPoint: CGPointMake(12, 20)];
         [[UIColor blackColor] setStroke];
-        bezierPath.lineWidth = 2.5;
+        bezierPath.lineWidth = 3;
         [bezierPath stroke];
         
         UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
@@ -123,7 +122,7 @@ static UIImage* imageForController(UIViewController* controller) {
     
     // image is to the left and vertically centered
     CGSize iSize = self.chevron.bounds.size;
-    self.chevron.frame = CGRectMake(0, 0.5 * (pSize.height - iSize.height), iSize.width, iSize.height);
+    self.chevron.frame = CGRectMake(-8, 0.5 * (pSize.height - iSize.height), iSize.width, iSize.height);
     
     // label is left of image and vertically centered
     
