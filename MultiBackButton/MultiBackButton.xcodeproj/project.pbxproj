@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE70E30F1AA1B4DF00922610 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BE70E30E1AA1B4DF00922610 /* README.md */; };
 		BE70E3121AA1BD8000922610 /* AB_MultiBackButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BE70E3111AA1BD8000922610 /* AB_MultiBackButtonItem.m */; };
 		BED998861AA09BA300F7FE5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998851AA09BA300F7FE5D /* main.m */; };
 		BED998891AA09BA300F7FE5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998881AA09BA300F7FE5D /* AppDelegate.m */; };
@@ -158,7 +157,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE70E30F1AA1B4DF00922610 /* README.md in Sources */,
 				BED9988C1AA09BA300F7FE5D /* ViewController.m in Sources */,
 				BE70E3121AA1BD8000922610 /* AB_MultiBackButtonItem.m in Sources */,
 				BED998891AA09BA300F7FE5D /* AppDelegate.m in Sources */,
