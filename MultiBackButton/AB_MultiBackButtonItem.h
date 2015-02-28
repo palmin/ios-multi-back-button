@@ -39,15 +39,6 @@
 // on ViewController that already has a MultiBackButtonItem
 -(void)configureMultiBackButton;
 
-// install navigation item before view-controller itself, and when picking this the view-hierarchy
-// is rolled back to this view-controller (that must be hierarchy root) and the action block is called.
--(void)configurePreviousTitle:(NSString*)title image:(UIImage*)image action:(void (^)(void))block;
-
-// used internally to get results from call to configurePreviousTitle:image:action:
-// but can be used to check by outside parties to check if something has already been configured
-// in which case it returns non-nil.
--(NSArray*)previousInfo;
-
 // You configure the image used in cells for this view-controller,
 // setting it in either in IB or perhaps viewDidLoad. The popup table will look much nicer if
 // you supply images for all view-controllers that take part and 25x25 images work well.
@@ -57,5 +48,21 @@
 // view-controller itself, but if you want something different set this property in
 // IB or viewDidLoad. You rarely need to set this property.
 @property (nonatomic, strong) IBInspectable NSString* multiBackButtonTitle;
+
+#pragma mark Previous item
+
+// Sometimes it makes sense to have a item before the root of the view-controller,
+// such as settings. You configure a "previous" item for the root controller to support this.
+
+// install navigation item before view-controller itself, and when picking this the view-hierarchy
+// is rolled back to this view-controller (that must be hierarchy root) and the action block is called.
+-(void)configurePreviousTitle:(NSString*)title image:(UIImage*)image action:(void (^)(void))block;
+
+// used internally to get results from call to configurePreviousTitle:image:action:
+// but can be used to check by outside parties to check if something has already been configured
+// in which case it returns non-nil.
+-(NSArray*)previousInfo;
+
+#pragma mark -
 
 @end
