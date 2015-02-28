@@ -1,5 +1,5 @@
 //
-//  MultiBackButtonItem.m
+//  AB_MultiBackButtonItem.m
 //
 //  Anders Borum @palmin
 //
@@ -26,9 +26,9 @@
 // SOFTWARE.
 
 #import <objc/message.h>
-#import "MultiBackButtonItem.h"
+#import "AB_MultiBackButtonItem.h"
 
-@interface MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
+@interface AB_MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
                                            UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate> {
     NSTimeInterval touchStart;
     CGPoint pointStart;
@@ -39,7 +39,7 @@
 
 @property (nonatomic, strong) UIImageView* chevron;
 //@property (nonatomic, strong) UILabel* label;
-@property (nonatomic, strong) MultiBackButtonItem* item;
+@property (nonatomic, strong) AB_MultiBackButtonItem* item;
 
 @property (nonatomic, weak) UIViewController* viewController;
 @property (nonatomic, strong) UITableViewController* tableController;
@@ -47,7 +47,7 @@
 
 @end
 
-@implementation MultiBackButtonView
+@implementation AB_MultiBackButtonView
 
 #define BackgroundColor [UIColor colorWithWhite:244.0/255 alpha:1];
 
@@ -335,10 +335,10 @@ static UIImage* imageForController(UIViewController* controller) {
 
 @end
 
-@implementation MultiBackButtonItem
+@implementation AB_MultiBackButtonItem
 
--(MultiBackButtonView*)view {
-    return (MultiBackButtonView*)self.customView;
+-(AB_MultiBackButtonView*)view {
+    return (AB_MultiBackButtonView*)self.customView;
 }
 
 -(void)refreshTitle {
@@ -351,14 +351,14 @@ static UIImage* imageForController(UIViewController* controller) {
         title = titleForViewController(before);
     }
     
-    MultiBackButtonView* view = (MultiBackButtonView*)self.customView;
+    AB_MultiBackButtonView* view = (AB_MultiBackButtonView*)self.customView;
     [view setTitle:title];
 }
 
-+(MultiBackButtonItem*)backButtonForController:(UIViewController*)controller {
-    MultiBackButtonView* view = [[MultiBackButtonView alloc] initWithFrame:CGRectMake(0,0, 75, 45)];
++(AB_MultiBackButtonItem*)backButtonForController:(UIViewController*)controller {
+    AB_MultiBackButtonView* view = [[AB_MultiBackButtonView alloc] initWithFrame:CGRectMake(0,0, 75, 45)];
     
-    MultiBackButtonItem* backButton = [[MultiBackButtonItem alloc] initWithCustomView:view];
+    AB_MultiBackButtonItem* backButton = [[AB_MultiBackButtonItem alloc] initWithCustomView:view];
     backButton.width = view.frame.size.width;
     backButton.view.viewController = controller;
     view.item = backButton;
@@ -368,7 +368,7 @@ static UIImage* imageForController(UIViewController* controller) {
 
 +(void)useForViewController:(UIViewController*)viewController {
     // stop early if we already are configured
-    if([viewController.navigationItem.leftBarButtonItem isKindOfClass:[MultiBackButtonItem class]]) {
+    if([viewController.navigationItem.leftBarButtonItem isKindOfClass:[AB_MultiBackButtonItem class]]) {
         return;
     }
     
@@ -378,8 +378,8 @@ static UIImage* imageForController(UIViewController* controller) {
                                     // which will perhaps never happen
     if(index == 0) return; // this happens both when there is no nav-controller or when at the root
     
-    UIBarButtonItem* item = [MultiBackButtonItem backButtonForController: viewController];
-    __weak MultiBackButtonView* weak_view = (MultiBackButtonView*)item.customView;
+    UIBarButtonItem* item = [AB_MultiBackButtonItem backButtonForController: viewController];
+    __weak AB_MultiBackButtonView* weak_view = (AB_MultiBackButtonView*)item.customView;
     
     viewController.navigationItem.leftBarButtonItem = item;
     viewController.navigationController.interactivePopGestureRecognizer.delegate = weak_view;
@@ -389,7 +389,7 @@ static UIImage* imageForController(UIViewController* controller) {
 
 @end
 
-@implementation UIViewController (MultiBackButtonItem)
+@implementation UIViewController (AB_MultiBackButtonItem)
 
 static char associationMultiBackButtonImage, associationMultiBackButtonTitle, associationPreviousInfo;
 
@@ -410,7 +410,7 @@ static char associationMultiBackButtonImage, associationMultiBackButtonTitle, as
 }
 
 -(void)configureMultiBackButton {
-    [MultiBackButtonItem useForViewController:self];
+    [AB_MultiBackButtonItem useForViewController:self];
 }
 
 -(NSArray*)previousInfo {

@@ -1,5 +1,5 @@
 //
-//  MultiBackButtonItem.h
+//  AB_MultiBackButtonItem.h
 //
 //  Anders Borum @palmin
 //
@@ -27,11 +27,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MultiBackButtonItem : UIBarButtonItem 
+@interface AB_MultiBackButtonItem : UIBarButtonItem 
 
 @end
 
-@interface UIViewController (MultiBackButtonItem)
+@interface UIViewController (AB_MultiBackButtonItem)
 
 // when view-controller would normally have a back-button because it is part of navigation
 // controller hierarchy and not at the root we set navigationItem.leftBarButtonItem and

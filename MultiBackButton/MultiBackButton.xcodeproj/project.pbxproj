@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE70E30F1AA1B4DF00922610 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BE70E30E1AA1B4DF00922610 /* README.md */; };
 		BED998861AA09BA300F7FE5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998851AA09BA300F7FE5D /* main.m */; };
 		BED998891AA09BA300F7FE5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998881AA09BA300F7FE5D /* AppDelegate.m */; };
 		BED9988C1AA09BA300F7FE5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED9988B1AA09BA300F7FE5D /* ViewController.m */; };
 		BED9988F1AA09BA300F7FE5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED9988D1AA09BA300F7FE5D /* Main.storyboard */; };
 		BED998911AA09BA300F7FE5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED998901AA09BA300F7FE5D /* Images.xcassets */; };
-		BED998AB1AA09C0C00F7FE5D /* MultiBackButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */; };
+		BED998AB1AA09C0C00F7FE5D /* AB_MultiBackButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998AA1AA09C0C00F7FE5D /* AB_MultiBackButtonItem.m */; };
 		BED998B01AA0A86900F7FE5D /* SmudgyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BED998801AA09BA300F7FE5D /* MultiBackButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MultiBackButton.app; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE70E30E1AA1B4DF00922610 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		BED998801AA09BA300F7FE5D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED998841AA09BA300F7FE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BED998851AA09BA300F7FE5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BED998871AA09BA300F7FE5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,8 +28,8 @@
 		BED9988B1AA09BA300F7FE5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BED9988E1AA09BA300F7FE5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BED998901AA09BA300F7FE5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		BED998A91AA09C0C00F7FE5D /* MultiBackButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiBackButtonItem.h; sourceTree = "<group>"; };
-		BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiBackButtonItem.m; sourceTree = "<group>"; };
+		BED998A91AA09C0C00F7FE5D /* AB_MultiBackButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AB_MultiBackButtonItem.h; sourceTree = "<group>"; };
+		BED998AA1AA09C0C00F7FE5D /* AB_MultiBackButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AB_MultiBackButtonItem.m; sourceTree = "<group>"; };
 		BED998AE1AA0A86900F7FE5D /* SmudgyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmudgyWindow.h; sourceTree = "<group>"; };
 		BED998AF1AA0A86900F7FE5D /* SmudgyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmudgyWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,8 +48,9 @@
 		BED998771AA09BA300F7FE5D = {
 			isa = PBXGroup;
 			children = (
-				BED998A91AA09C0C00F7FE5D /* MultiBackButtonItem.h */,
-				BED998AA1AA09C0C00F7FE5D /* MultiBackButtonItem.m */,
+				BE70E30E1AA1B4DF00922610 /* README.md */,
+				BED998A91AA09C0C00F7FE5D /* AB_MultiBackButtonItem.h */,
+				BED998AA1AA09C0C00F7FE5D /* AB_MultiBackButtonItem.m */,
 				BED998821AA09BA300F7FE5D /* Example */,
 				BED998811AA09BA300F7FE5D /* Products */,
 			);
@@ -56,7 +59,7 @@
 		BED998811AA09BA300F7FE5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BED998801AA09BA300F7FE5D /* MultiBackButton.app */,
+				BED998801AA09BA300F7FE5D /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,7 +107,7 @@
 			);
 			name = Example;
 			productName = MultiBackButton;
-			productReference = BED998801AA09BA300F7FE5D /* MultiBackButton.app */;
+			productReference = BED998801AA09BA300F7FE5D /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,11 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE70E30F1AA1B4DF00922610 /* README.md in Sources */,
 				BED9988C1AA09BA300F7FE5D /* ViewController.m in Sources */,
 				BED998891AA09BA300F7FE5D /* AppDelegate.m in Sources */,
 				BED998B01AA0A86900F7FE5D /* SmudgyWindow.m in Sources */,
 				BED998861AA09BA300F7FE5D /* main.m in Sources */,
-				BED998AB1AA09C0C00F7FE5D /* MultiBackButtonItem.m in Sources */,
+				BED998AB1AA09C0C00F7FE5D /* AB_MultiBackButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
