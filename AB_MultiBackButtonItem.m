@@ -159,7 +159,6 @@ static UIImage* imageForController(UIViewController* controller) {
     self.cells = nil;
 }
 
-
 -(void)presentSelection {
     NSArray* viewControllers = self.viewController.navigationController.viewControllers;
     NSUInteger index = [viewControllers indexOfObject:self.viewController];
@@ -380,6 +379,11 @@ static UIImage* imageForController(UIViewController* controller) {
 }
 
 #pragma mark -
+
+// handle swipe left gesture, which we allow unless popup is shown
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return self.tableController == nil;
+}
 
 @end
 
