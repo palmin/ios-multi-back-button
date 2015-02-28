@@ -71,12 +71,38 @@ static UIImage* imageForController(UIViewController* controller) {
     return controller.multiBackButtonImage;
 }
 
++(UIImage*)chevronImage {
+    static UIImage* _image = nil;
+
+    if(_image == nil) {
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(13, 21), NO, 0);
+        
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = UIBezierPath.bezierPath;
+        [bezierPath moveToPoint: CGPointMake(12, 1)];
+        [bezierPath addLineToPoint: CGPointMake(2, 10.5)];
+        [bezierPath addLineToPoint: CGPointMake(12, 20)];
+        [[UIColor blackColor] setStroke];
+        bezierPath.lineWidth = 2.5;
+        [bezierPath stroke];
+        
+        UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        // should be tint-colored
+        _image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    
+    return _image;
+}
+
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self) {
         self.accessibilityLabel = NSLocalizedString(@"Back", nil);
         
-        UIImageView* chevron = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
+        UIImage* image = [AB_MultiBackButtonView chevronImage];
+        UIImageView* chevron = [[UIImageView alloc] initWithImage:image];
         [self addSubview:chevron];
         self.chevron = chevron;
         

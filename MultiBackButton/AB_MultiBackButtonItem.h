@@ -49,11 +49,13 @@
 -(NSArray*)previousInfo;
 
 // You configure the image used in cells for this view-controller,
-// setting in either in IB or perhaps viewDidLoad.
+// setting it in either in IB or perhaps viewDidLoad. The popup table will look much nicer if
+// you supply images for all view-controllers that take part and 25x25 images work well.
 @property (nonatomic, strong) IBInspectable UIImage* multiBackButtonImage;
 
-// If you do not want the title from navigationItem.title or title you can
-// setting in either in IB or perhaps viewDidLoad.
+// The name of view-controller shown in popup is taken from navigationItem.title or title of
+// view-controller itself, but if you want something different set this property in
+// IB or viewDidLoad. You rarely need to set this property.
 @property (nonatomic, strong) IBInspectable NSString* multiBackButtonTitle;
 
 @end

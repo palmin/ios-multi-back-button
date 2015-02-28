@@ -25,7 +25,8 @@ You configure a view-controller to use there buttons with somelink like
 }
 ````
 
-You need to include `AB_MultiBackButtonItem.h`, `AB_MultiBackButtonItem.m` and the `back` image found in the `Images.xcassets` in the project.
+You just need to include `AB_MultiBackButtonItem.h` and `AB_MultiBackButtonItem.m` in your project
+and ``#import "AB_MultiBackButtonItem.h"``.
 
 Because I have not reliable way to determine how much space is available in the navigation bar, the
 back-button never shows the title of the previous view controller. I would much rather it included a title 
