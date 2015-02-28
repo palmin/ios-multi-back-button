@@ -29,7 +29,9 @@
 #import "AB_MultiBackButtonItem.h"
 
 #define RotateChevron NO
-#define BackgroundColor [UIColor colorWithWhite:244.0/255 alpha:1];
+
+// background color matches popup that contains the table
+#define BackgroundColor [UIColor colorWithRed:247.0/255 green:247.0/255 blue:248.0/255 alpha:1]
 
 @interface AB_MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
                                            UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate> {
