@@ -28,6 +28,8 @@
 #import <objc/message.h>
 #import "AB_MultiBackButtonItem.h"
 
+#define RotateChevron NO
+
 @interface AB_MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
                                            UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate> {
     NSTimeInterval touchStart;
@@ -215,12 +217,14 @@ static UIImage* imageForController(UIViewController* controller) {
 -(void)removeSelectionAnimated:(BOOL)animated completion:(void (^)(void))block {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(presentSelection) object:nil];
 
-    if(animated) {
-        [UIView animateWithDuration:0.2 animations:^{
+    if(RotateChevron) {
+        if(animated) {
+            [UIView animateWithDuration:0.2 animations:^{
+                self.chevron.transform = CGAffineTransformIdentity;
+            }];
+        } else {
             self.chevron.transform = CGAffineTransformIdentity;
-        }];
-    } else {
-        self.chevron.transform = CGAffineTransformIdentity;
+        }
     }
     
     if(self.tableController) {
@@ -262,10 +266,12 @@ static UIImage* imageForController(UIViewController* controller) {
     NSTimeInterval delay = 0.3;
 
     // animate chevron to point down
-    [UIView animateWithDuration:delay delay: 0.5 * delay usingSpringWithDamping:0.3 initialSpringVelocity:0
-                        options:0 animations:^{
-                            self.chevron.transform = CGAffineTransformMakeRotation(-M_PI_2);
-    } completion:nil];
+    if(RotateChevron) {
+        [UIView animateWithDuration:delay delay: 0.5 * delay usingSpringWithDamping:0.3 initialSpringVelocity:0
+                            options:0 animations:^{
+                                self.chevron.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                            } completion:nil];
+    }
     
     [self performSelector:@selector(presentSelection) withObject:nil afterDelay:delay];
 }
