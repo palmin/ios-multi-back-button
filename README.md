@@ -1,7 +1,7 @@
 # ios-multi-back-button
 
 Replacement for the built-in UInavigationController back-button that allows going back multiple
-levels. 
+levels. It requires iOS 8 as it uses popover presentation of view-controllers on iPhone.
 
 Users long-tap the back-button to display a table with the viewControllers in the current navigation
 stack. They either lift the finger and tap a table-cell or move it above the table and release above 
