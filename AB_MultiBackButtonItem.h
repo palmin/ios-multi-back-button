@@ -54,8 +54,9 @@
 // Sometimes it makes sense to have a item before the root of the view-controller,
 // such as settings. You configure a "previous" item for the root controller to support this.
 
-// install navigation item before view-controller itself, and when picking this the view-hierarchy
+// Install navigation item before view-controller itself, and when picking this the view-hierarchy
 // is rolled back to this view-controller (that must be hierarchy root) and the action block is called.
+// You remove any previous entry if either title or block is nil.
 -(void)configurePreviousTitle:(NSString*)title image:(UIImage*)image action:(void (^)(void))block;
 
 // used internally to get results from call to configurePreviousTitle:image:action:

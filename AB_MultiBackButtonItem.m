@@ -33,6 +33,8 @@
 // background color matches popup that contains the table
 #define BackgroundColor [UIColor colorWithRed:247.0/255 green:247.0/255 blue:248.0/255 alpha:1]
 
+#define PopupWidth 290
+
 @interface AB_MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
                                            UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate> {
     NSTimeInterval touchStart;
@@ -201,9 +203,9 @@ static UIImage* imageForController(UIViewController* controller) {
         tableView.alwaysBounceVertical = NO;
         [tableView sizeToFit];
         CGRect f = tableView.frame;
-        f.size.width = 290;
+        f.size.width = PopupWidth;
         tableView.frame = f;
-        self.tableController.preferredContentSize = tableView.bounds.size;
+        self.tableController.preferredContentSize = f.size;
                 
         self.tableController.modalPresentationStyle = UIModalPresentationPopover;
         self.tableController.popoverPresentationController.delegate = self;
@@ -472,9 +474,13 @@ static char associationMultiBackButtonImage, associationMultiBackButtonTitle, as
 }
 
 -(void)configurePreviousTitle:(NSString*)title image:(UIImage*)image action:(void (^)(void))block {
-    NSArray* info = @[title != nil ? title : nil,
-                      image != nil ? image : [NSNull null],
-                      [block copy]];
+    NSArray* info = nil;
+    if(title != nil && block != nil) {
+        info = @[title != nil ? title : nil,
+                 image != nil ? image : [NSNull null],
+                 [block copy]];
+    }
+    
     objc_setAssociatedObject (self, &associationPreviousInfo, info, OBJC_ASSOCIATION_RETAIN);
 }
 
