@@ -28,17 +28,12 @@
 #import <objc/message.h>
 #import "AB_MultiBackButtonItem.h"
 
+#define RotateChevron NO
+
 // background color matches popup that contains the table
 #define BackgroundColor [UIColor colorWithRed:247.0/255 green:247.0/255 blue:248.0/255 alpha:1]
 
 #define PopupWidth 290
-
-// when regular back button is used multiple times within this time interval,
-// we hint at long-tap by showing burger-menu lines
-#define LongTapHintSeconds 12
-
-// notification sent when there are changes to hint state and buttons should refresh
-#define LongTapHintEvent @"AB_MultiBackButtonView_Hint"
 
 @interface AB_MultiBackButtonView : UIButton <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,
                                            UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate> {
@@ -50,7 +45,6 @@
 }
 
 @property (nonatomic, strong) UIImageView* chevron;
-@property (nonatomic, strong) UIImageView* discoveryLines;
 //@property (nonatomic, strong) UILabel* label;
 @property (nonatomic, strong) AB_MultiBackButtonItem* item;
 
@@ -107,101 +101,13 @@ static UIImage* imageForController(UIViewController* controller) {
     return _image;
 }
 
-+(UIImage*)discoveryImage {
-    static UIImage* _image = nil;
-    
-    if(_image == nil) {
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(33, 21), NO, 0);
-        
-        //// Bezier Drawing
-        UIBezierPath* bezierPath = UIBezierPath.bezierPath;
-        [bezierPath moveToPoint: CGPointMake(17, 5)];
-        [bezierPath addLineToPoint: CGPointMake(32, 5)];
-        
-        [bezierPath moveToPoint: CGPointMake(17, 10.5)];
-        [bezierPath addLineToPoint: CGPointMake(32, 10.5)];
-        
-        [bezierPath moveToPoint: CGPointMake(17, 16)];
-        [bezierPath addLineToPoint: CGPointMake(32, 16)];
-
-        [[UIColor blackColor] setStroke];
-        bezierPath.lineWidth = 1.5;
-        [bezierPath stroke];
-        
-        UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        // should be tint-colored
-        _image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    }
-    
-    return _image;
-}
-
-static NSTimeInterval lastTimeSimpleBack = 0;
-static CGFloat hintAlphaLastTime = 0;
-
-static CGFloat currentHintAlpha() {
-    NSTimeInterval secsSinceBack = [NSDate timeIntervalSinceReferenceDate] - lastTimeSimpleBack;
-    CGFloat alpha = fmax(0, hintAlphaLastTime - secsSinceBack / LongTapHintSeconds);
-    NSLog(@"alpha(%f) @ %f secs ago -> %f", hintAlphaLastTime, secsSinceBack, alpha);
-    return alpha;
-}
-
--(void)refreshLongTapHintAlpha:(NSNotification*)notification {
-    // we do not change ourselves, as this looks bad
-    if(notification.object == self) return;
-    
-    CGFloat alpha = currentHintAlpha();
-    self.discoveryLines.alpha = alpha;
-    
-    if(alpha > 0.0) {
-        [UIView animateWithDuration:LongTapHintSeconds * alpha animations: ^{
-            self.discoveryLines.alpha = 0;
-        }];
-    }
-}
-
-// we try to determine when user goes back manually such that long-tap should be hinted at
--(void)registerNormalBack {
-    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-    NSTimeInterval secsSinceBack = now - lastTimeSimpleBack;
-
-    if(secsSinceBack >= LongTapHintSeconds) {
-        // this is maximum time-interval, we restart counters
-        hintAlphaLastTime = 0;
-    } else {
-        hintAlphaLastTime = currentHintAlpha();
-        hintAlphaLastTime += 0.3 * (LongTapHintSeconds - secsSinceBack) / LongTapHintSeconds;
-        hintAlphaLastTime = fmin(1, hintAlphaLastTime);
-    }
-    lastTimeSimpleBack = now;
-    NSLog(@"alpha = %f", hintAlphaLastTime);
-    
-    if(hintAlphaLastTime > 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:LongTapHintEvent object:self];
-    }
-}
-
--(void)registerPopup {
-    if(hintAlphaLastTime > 0.0) {
-        hintAlphaLastTime = 0;
-        [[NSNotificationCenter defaultCenter] postNotificationName:LongTapHintEvent object:nil];
-    }
-}
-
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self) {
         self.accessibilityLabel = NSLocalizedString(@"Back", nil);
         
-        UIImageView* discoveryLines = [[UIImageView alloc] initWithImage: [AB_MultiBackButtonView discoveryImage]];
-        discoveryLines.contentMode = UIViewContentModeCenter;
-        [self addSubview:discoveryLines];
-        self.discoveryLines = discoveryLines;
-        [self refreshLongTapHintAlpha: nil];
-        
-        UIImageView* chevron = [[UIImageView alloc] initWithImage: [AB_MultiBackButtonView chevronImage]];
+        UIImage* image = [AB_MultiBackButtonView chevronImage];
+        UIImageView* chevron = [[UIImageView alloc] initWithImage:image];
         chevron.contentMode = UIViewContentModeCenter;
         [self addSubview:chevron];
         self.chevron = chevron;
@@ -211,15 +117,8 @@ static CGFloat currentHintAlpha() {
         //label.lineBreakMode = NSLineBreakByTruncatingTail;
         //[self addSubview: label];
         //self.label = label;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshLongTapHintAlpha:)
-                                                     name:LongTapHintEvent object:nil];
     }
     return self;
-}
-
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)layoutSubviews {
@@ -228,8 +127,6 @@ static CGFloat currentHintAlpha() {
     // image is to the left and vertically centered
     CGSize iSize = self.chevron.bounds.size;
     self.chevron.frame = CGRectMake(-8, 0.5 * (pSize.height - iSize.height), iSize.width, iSize.height);
-    iSize = self.discoveryLines.bounds.size;
-    self.discoveryLines.frame = CGRectMake(-8, 0.5 * (pSize.height - iSize.height), iSize.width, iSize.height);
     
     // label is left of image and vertically centered
     
@@ -267,8 +164,6 @@ static CGFloat currentHintAlpha() {
 }
 
 -(void)presentSelection {
-    [self registerPopup];
-    
     NSArray* viewControllers = self.viewController.navigationController.viewControllers;
     NSUInteger index = [viewControllers indexOfObject:self.viewController];
     if(index == NSNotFound) return;
@@ -321,9 +216,18 @@ static CGFloat currentHintAlpha() {
     }
 }
 
--(void)removeSelectionAnimated:(BOOL)animated
-                    completion:(void (^)(void))block {
+-(void)removeSelectionAnimated:(BOOL)animated completion:(void (^)(void))block {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(presentSelection) object:nil];
+
+    if(RotateChevron) {
+        if(animated) {
+            [UIView animateWithDuration:0.2 animations:^{
+                self.chevron.transform = CGAffineTransformIdentity;
+            }];
+        } else {
+            self.chevron.transform = CGAffineTransformIdentity;
+        }
+    }
     
     if(self.tableController) {
         [self.viewController dismissViewControllerAnimated:animated completion:^{
@@ -361,7 +265,17 @@ static CGFloat currentHintAlpha() {
     significantMovement = NO;
     touchStart = [NSDate timeIntervalSinceReferenceDate];
     
-    [self performSelector:@selector(presentSelection) withObject:nil afterDelay:0.3];
+    NSTimeInterval delay = 0.3;
+
+    // animate chevron to point down
+    if(RotateChevron) {
+        [UIView animateWithDuration:delay delay: 0.5 * delay usingSpringWithDamping:0.3 initialSpringVelocity:0
+                            options:0 animations:^{
+                                self.chevron.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                            } completion:nil];
+    }
+    
+    [self performSelector:@selector(presentSelection) withObject:nil afterDelay:delay];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -405,7 +319,7 @@ static CGFloat currentHintAlpha() {
     
     // if we have had much movement but no selection we just dismiss without going back
     if(significantMovement) {
-        [self removeSelectionAnimated:YES completion:nil];
+        [self removeSelectionAnimated: YES completion:nil];
         return;
     }
     
@@ -415,7 +329,6 @@ static CGFloat currentHintAlpha() {
     
     // if we end quick touch we do regular back
     [self removeSelectionAnimated:YES completion:^{
-        [self registerNormalBack];
         [self.viewController.navigationController popViewControllerAnimated:YES];
     }];
 }
