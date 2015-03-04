@@ -1,6 +1,6 @@
 # ios-multi-back-button
 
-Replacement for the built-in UInavigationController back-button that allows going back multiple
+Replacement for the built-in UINavigationController back-button that allows going back multiple
 levels. It requires iOS 8 as it uses popover presentation of view-controllers on iPhone.
 
 Users long-tap the back-button to display a table with the viewControllers in the current navigation
@@ -12,7 +12,7 @@ will bring you back a single level as usual.
   <img src="example.gif"/>
   
 
-You configure a view-controller to use there buttons with somelink like
+You configure a view-controller to use there buttons with some link like
 
 ````
 #import "AB_MultiBackButtonItem.h"
