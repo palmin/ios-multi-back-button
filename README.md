@@ -8,6 +8,8 @@ stack. They either lift the finger and tap a table-cell or move it above the tab
 the cell for the view-controller you want to navigate to. If they do a regular tap, the back-button 
 will bring you back a single level as usual.
 
+One problem with short-taps works regularly is that users will not discover the popup unless they explicitly try to long-tap. This experiment tries to measure when users is in need of the popup, because he/she makes multiple regular back operations in succession. Hamburger-lines will fade in and become visually stronger as more short-tap backs are registred within a short time-interval. It is unfortunately more confusing than helpful. 
+
 
   <img src="example.gif"/>
   
