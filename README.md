@@ -12,7 +12,7 @@ will bring you back a single level as usual.
   <img src="example.gif"/>
   
 
-You configure a view-controller to use there buttons with some link like
+You configure a view-controller to use there buttons with something like
 
 ````
 #import "AB_MultiBackButtonItem.h"
